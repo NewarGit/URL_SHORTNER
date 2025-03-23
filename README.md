@@ -1,4 +1,4 @@
----
+
 
 # 🌐 URL Shortener
 
@@ -43,13 +43,13 @@ A **URL Shortener** application built with **React**, **Node.js**, **MongoDB**, 
 ## 🚀 Running the Project
 ### ✅ **Step 1: Clone the repository**
 ```bash
-git clone <your-repo-url>
-cd <your-project-directory>
+git clone https://github.com/NewarGit/URL_SHORTNER.git URL
+cd URL
 ```
 
 ### ✅ **Step 2: Run the app with Docker Compose**
 ```bash
-docker-compose up --build
+docker compose up -d
 ```
 This builds and runs:
 - React frontend (`localhost:5173`)
