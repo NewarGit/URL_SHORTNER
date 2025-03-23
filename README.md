@@ -31,7 +31,7 @@ A **URL Shortener** application built with **React**, **Node.js**, **MongoDB**, 
 1. **User interacts with React frontend** (served on `localhost:5173`).
 2. **Frontend** sends API requests to **NGINX** (running on `localhost:8080`).
 3. **NGINX**:
-   - Proxies `/api/` requests to **one of the 3 Node.js backend containers** (Load Balancing using Round Robin).
+   - Proxies `/` requests to **one of the 3 Node.js backend containers** (Load Balancing using Round Robin).
    - Proxies other frontend routes directly to React (if needed).
 4. **Backend (Node.js)** interacts with **MongoDB** to:
    - Store shortened URLs.
@@ -63,7 +63,7 @@ This builds and runs:
 | Service        | URL                      |
 |----------------|--------------------------|
 | **Frontend**   | http://localhost:5173/   |
-| **API**        | http://localhost:8080/api |
+| **API**        | http://localhost:8080/ |
 | **Short URL**  | http://localhost:8080/<short-code> |
 
 ---
@@ -71,7 +71,7 @@ This builds and runs:
 ## 📈 Example Usage
 - Shorten URL:
 ```javascript
-axios.post('http://localhost:8080/api/shorten', { longUrl: 'https://example.com' })
+axios.post('http://localhost:8080/shorten', { longUrl: 'https://example.com' })
 ```
 - Access shortened URL:
 ```
@@ -90,7 +90,7 @@ upstream backend_cluster {
     server backend3:5000;
 }
 ```
-Every `/api/` call is distributed between the three backend servers, improving scalability and handling concurrent requests.
+Every `/` call is distributed between the three backend servers, improving scalability and handling concurrent requests.
 
 ---
 
@@ -111,7 +111,7 @@ The frontend uses **Tailwind CSS** for clean, responsive UI.
 
 ## 💻 Example API Request
 ```javascript
-const { data } = await axios.post('http://localhost:8080/api/shorten', {
+const { data } = await axios.post('http://localhost:8080/shorten', {
     longUrl: 'https://openai.com'
 });
 console.log(data.shortUrl); // http://localhost:8080/abc123
